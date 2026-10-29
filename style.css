@@ -142,3 +142,7 @@ figure img {
 .flow .gray { background: var(--step-gray-bg); border-color: var(--step-gray-line); }
 .flow .purple { background: var(--step-purple-bg); border-color: var(--step-purple-line); }
 .flow .green { background: var(--step-green-bg); border-color: var(--step-green-line); }
+
+/* 첫 화면: 제목 바로 아래 Contact */
+h1 + h2 { margin-top: 8px; border-top: 0; padding-top: 0; }
+ul.contact { margin-bottom: 36px; }
