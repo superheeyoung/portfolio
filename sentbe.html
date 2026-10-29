@@ -53,7 +53,7 @@
             <div class="step purple">ID, PW를 PublicKey로 RSA 암호화</div>
             <div class="step green">입력받은 화면잠금번호로 SHA256을 통해 Hash 생성</div>
             <div class="step green">AES256으로 한 번 더 암호화
-              <small>(RSA로 암호화한 ID, PW를 SHA256으로 생성한 Hash를 secret으로 사용해 한 번 더 암호화)</small>
+              <small>(RSA로 암호화한 ID, PW를 앞서 생성한 Hash를 secret으로 사용해 AES256으로 한 번 더 암호화)</small>
             </div>
             <div class="step gray">AES256으로 암호화된 값 캐싱</div>
           </div>
