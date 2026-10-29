@@ -3,14 +3,80 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>센트비</title>
+<title>센트비 (2019.07~2022.03)</title>
+<meta name="description" content="센트비 안드로이드 개발 내용">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <main>
   <a class="back" href="index.html">← 경력사항</a>
   <h1>센트비(2019.07~2022.03)</h1>
-  <p class="note">내용 작성 예정입니다.</p>
+
+  <div class="links">
+    <p>앱 링크(<a href="https://play.google.com/store/search?q=%EC%84%BC%ED%8A%B8%EB%B9%84&amp;c=apps&amp;hl=ko" target="_blank" rel="noopener">https://play.google.com/store/search?q=센트비&amp;c=apps&amp;hl=ko</a>)</p>
+  </div>
+
+  <h2>사용 기술</h2>
+  <ul class="tech">
+    <li>Kotlin</li>
+    <li>MVVM + Clean Architecture</li>
+    <li>ViewBinding</li>
+    <li>AAC
+      <ul>
+        <li>ViewModel</li>
+        <li>LiveData</li>
+        <li>Lifecycle</li>
+        <li>Room</li>
+      </ul>
+    </li>
+    <li>Retrofit</li>
+    <li>RxJava</li>
+    <li>Koin</li>
+  </ul>
+
+  <h2>개발 내용</h2>
+  <ul class="dev">
+    <li>앱 최초 런칭 후 안정화 작업을 수행하고, 50만 다운로드 규모의 앱을 확장·유지보수</li>
+
+    <li>송금 시 수취인 정보 입력 화면에 SDUI 적용
+      <ul>
+        <li>송금 국가·업체마다 입력받아야 하는 정보가 달라, 확장성을 위해 SDUI로 구현</li>
+      </ul>
+    </li>
+
+    <li>화면잠금번호 구현
+      <ul>
+        <li>자동 로그인 세팅 로직
+          <div class="flow" role="group" aria-label="자동 로그인 세팅 로직 흐름도">
+            <div class="step gray">로그인 성공 + 캐싱된 암호화 데이터 없음</div>
+            <div class="step purple">서버에서 PublicKey 받아오기</div>
+            <div class="step purple">ID, PW를 PublicKey로 RSA 암호화</div>
+            <div class="step green">입력받은 화면잠금번호로 SHA256을 통해 Hash 생성</div>
+            <div class="step green">AES256으로 한 번 더 암호화
+              <small>(RSA로 암호화한 ID, PW를 SHA256으로 생성한 Hash를 secret으로 사용해 한 번 더 암호화)</small>
+            </div>
+            <div class="step gray">AES256으로 암호화된 값 캐싱</div>
+          </div>
+        </li>
+        <li>자동 로그인 처리 로직
+          <div class="flow" role="group" aria-label="자동 로그인 처리 로직 흐름도">
+            <div class="step gray">1. 저장된 AES256 값 확인
+              <small>디바이스에 값이 있으면 진행</small>
+            </div>
+            <div class="step green">2. 잠금번호로 SHA256 Hash 생성
+              <small>사용자가 입력한 잠금번호</small>
+            </div>
+            <div class="step green">3. AES256으로 저장된 ID, PW 값을 2번에서 생성한 Hash로 복호화</div>
+            <div class="step purple">4. 서버로 전송 후 로그인 처리
+              <small>복호화가 올바르게 된 경우</small>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </li>
+
+    <li>신규 기능 개발 및 메인 기능 UI 디자인 개편</li>
+  </ul>
 </main>
 </body>
 </html>

@@ -91,3 +91,54 @@ figure img {
 }
 .career a.row:hover { background: var(--hover); }
 .career svg { flex: none; color: var(--sub); }
+
+/* 플로우 도식 */
+:root {
+  --step-gray-bg: #f2f4f6; --step-gray-line: #d1d6db;
+  --step-purple-bg: #ece9fe; --step-purple-line: #c9c0fa;
+  --step-green-bg: #dff5ea; --step-green-line: #a7dcc3;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --step-gray-bg: #2b2b2d; --step-gray-line: #4a4a4e;
+    --step-purple-bg: #30295f; --step-purple-line: #5a4fa8;
+    --step-green-bg: #0d4a39; --step-green-line: #2c7f63;
+  }
+}
+.flow {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+  max-width: 520px;
+  margin: 14px 0 22px;
+  padding: 0;
+  list-style: none;
+}
+.flow .step {
+  position: relative;
+  margin: 0;
+  padding: 14px 16px;
+  text-align: center;
+  font-weight: 600;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  word-break: keep-all;
+}
+.flow .step small {
+  display: block;
+  margin-top: 6px;
+  font-weight: 400;
+  font-size: 0.85em;
+  color: var(--sub);
+}
+.flow .step:not(:last-child)::after {
+  content: "↓";
+  position: absolute;
+  left: 50%;
+  bottom: -27px;
+  transform: translateX(-50%);
+  color: var(--sub);
+}
+.flow .gray { background: var(--step-gray-bg); border-color: var(--step-gray-line); }
+.flow .purple { background: var(--step-purple-bg); border-color: var(--step-purple-line); }
+.flow .green { background: var(--step-green-bg); border-color: var(--step-green-line); }
