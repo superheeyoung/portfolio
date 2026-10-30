@@ -144,5 +144,6 @@ figure img {
 .flow .green { background: var(--step-green-bg); border-color: var(--step-green-line); }
 
 /* 첫 화면: 제목 바로 아래 Contact */
-h1 + h2 { margin-top: 8px; border-top: 0; padding-top: 0; }
+.intro { margin: 0 0 28px; font-size: 18px; font-weight: 600; }
+.intro + h2 { margin-top: 8px; border-top: 0; padding-top: 0; }
 ul.contact { margin-bottom: 36px; }
